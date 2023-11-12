@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.backend.Service.CustomerService;
-import com.backend.backend.Service.UserService;
 
 
 @RestController

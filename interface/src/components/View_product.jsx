@@ -9,6 +9,7 @@ import {
 } from 'mdb-react-ui-kit';
 import Nav from './AfterNav';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const BGCARD = {
     background: 'linear-gradient(90deg, rgba(100,121,100,1) 0%, rgba(138,167,105,1) 100%)',
@@ -63,15 +64,51 @@ export default function ViewProduct() {
             },
             showCancelButton: true,
             confirmButtonText: 'Add to Cart',
-            showLoaderOnConfirm: true,
+            showLoaderOnConfirm: false,
             preConfirm: (quantity) => {
                 if (quantity > 0) {
-                    
+                    saveCart(quantity);
                 } else {
                     Swal.showValidationMessage('Quantity must be greater than 0');
                 }
             },
             allowOutsideClick: () => !Swal.isLoading(),
+        });
+    }
+
+    function saveCart(quantity) {
+        const cartItem = {
+            cus: '1',  
+            itemid: productid,   
+            itemname: productName, 
+            price: price,    
+            quantity : quantity
+        };
+
+        axios.post('http://localhost:8080/cart/save', cartItem)
+        .then(response => {
+           
+            if (response.status === 200) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Cart saved successfully!',
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to save cart. Please try again.',
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error saving cart:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'An error occurred while saving the cart.',
+            });
         });
     }
 

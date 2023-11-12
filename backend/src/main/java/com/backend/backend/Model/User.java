@@ -1,7 +1,6 @@
 package com.backend.backend.Model;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.boot.model.relational.Database;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

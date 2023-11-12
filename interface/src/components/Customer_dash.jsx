@@ -3,7 +3,7 @@ import {
   MDBCard,
   MDBCardBody,
   MDBBtn,
-  MDBCardText,
+  MDBIcon,
   MDBTypography,
   MDBRow,
   MDBCol,
@@ -39,6 +39,10 @@ export default function Index() {
     useEffect(() => {
       fetchData();
     }, []);
+
+    function view_cart(productid){
+        window.location.href = "/user/ViewProduct?productid="+productid;
+    }
 
     return (
         <>
@@ -86,11 +90,12 @@ export default function Index() {
                                         {product.name}
                                         </MDBTypography>
                                     </div>
-                                    <hr/>
-                                    <MDBTypography style={{ fontSize: '18px' }} className='text-center fw-normal'>{`LKR ${product.price.toFixed(2)}`}</MDBTypography>
+                                    <MDBTypography style={{ fontSize: '16px' }} className='text-center fw-normal'>{`LKR ${product.price.toFixed(2)}`}</MDBTypography>
                                     </MDBCardBody>
-                                    <MDBCardFooter>
-                                        
+                                    <MDBCardFooter className='text-center'>
+                                        <MDBBtn color='dark' outline onClick={()=>view_cart(product.productid)}>
+                                            View Product  <MDBIcon className='ms-1' far icon='eye' size='lg' />
+                                        </MDBBtn>
                                     </MDBCardFooter>
                                 </MDBCard>
                                 </MDBCol>

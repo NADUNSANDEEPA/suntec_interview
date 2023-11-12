@@ -7,10 +7,8 @@ import com.backend.backend.Repository.UserRepository;
 
 @Service
 public class UserService {
-    
     @Autowired
     UserRepository userRepository;
-
     public void saveOrUpdate(User users)
     {
         userRepository.save(users);

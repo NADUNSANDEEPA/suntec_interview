@@ -14,6 +14,7 @@ import Products from './components/admin/product';
 import Login from './components/login';
 import Register from './components/Register';
 import CusDashboard from './components/Customer_dash';
+import ViewProduct from './components/View_product';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/user/Register" element={<Register />}  />         
         <Route path="/user/Login" element={<Login />}  />         
         <Route path="/user/Dashboard" element={<CusDashboard />}  />         
+        <Route path="/user/ViewProduct" element={<ViewProduct />}  />         
       </Routes>
     </BrowserRouter>
   );

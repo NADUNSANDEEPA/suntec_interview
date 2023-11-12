@@ -26,6 +26,9 @@ public class Cart {
     @Column(length = 255)
     private String price;
 
+    @Column(length = 255)
+    private String status;
+
     @Column
     private int quantity;
 
@@ -36,6 +39,13 @@ public class Cart {
 
     // Default constructor
     public Cart() {
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        if (this.status == null) {
+            this.status = "bought";
+        }
     }
 
     // Getters and Setters
@@ -94,6 +104,14 @@ public class Cart {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+ 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

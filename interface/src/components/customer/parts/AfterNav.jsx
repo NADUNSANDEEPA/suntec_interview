@@ -11,19 +11,35 @@ import {
     MDBNavbarItem,
     MDBNavbarLink,
     MDBBtn,
-    MDBDropdown,
-    MDBDropdownToggle,
-    MDBDropdownMenu,
-    MDBDropdownItem,
     MDBCollapse,
   } from 'mdb-react-ui-kit';
+  import Swal from 'sweetalert2';
 
 function Index() {
   const [openBasic, setOpenBasic] = useState(false);
 
-  function register(){
-    window.location.href = "/user/Register";
+  function logout() {
+      Swal.fire({
+          title: 'Logout',
+          text: 'Are you sure you want to logout?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, logout!'
+      }).then((result) => {
+          if (result.isConfirmed) {
+              Swal.fire({
+                  title: 'Logged Out',
+                  text: 'You have been successfully logged out.',
+                  icon: 'success',
+                  timer: 2000, 
+                  showConfirmButton: false
+              });
+          }
+      });
   }
+
 
   return (
     <>
@@ -46,12 +62,12 @@ function Index() {
         <MDBCollapse navbar open={openBasic}>
           <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
             <MDBNavbarItem className='ps-4'>
-              <MDBNavbarLink className='fw-normal text-uppercase' active aria-current='page' href='#'>
+              <MDBNavbarLink className='fw-normal text-uppercase' active aria-current='page' href='/user/Dashboard'>
                 Home
               </MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem className='ps-4'>
-              <MDBNavbarLink className='fw-normal text-uppercase' active aria-current='page' href='#'>
+              <MDBNavbarLink className='fw-normal text-uppercase' active aria-current='page' href='/user/Cart'>
                 Cart
               </MDBNavbarLink>
             </MDBNavbarItem>
@@ -63,7 +79,7 @@ function Index() {
           </MDBNavbarNav>
 
           <div className='d-flex input-group w-auto'>
-            <MDBBtn className='shadow-0 pt-3 pb-3' style={{border:'1px solid #364742' , backgroundColor:'white' , fontWeight:'700' , fontSize:'15px' , color:'#364742'}} onClick={register}>LogOut</MDBBtn>
+            <MDBBtn className='shadow-0 pt-3 pb-3' style={{border:'1px solid #364742' , backgroundColor:'white' , fontWeight:'700' , fontSize:'15px' , color:'#364742'}} onClick={logout}>LogOut</MDBBtn>
           </div>
         </MDBCollapse>
       </MDBContainer>

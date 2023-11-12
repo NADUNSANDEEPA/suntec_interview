@@ -9,7 +9,7 @@ import {
   MDBCol,
   MDBCardFooter,
 } from 'mdb-react-ui-kit';
-import Nav from './AfterNav';
+import Nav from './parts/AfterNav';
 
 const BGCARD = {
     background: 'linear-gradient(90deg, rgba(100,121,100,1) 0%, rgba(138,167,105,1) 100%)',

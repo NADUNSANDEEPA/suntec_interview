@@ -10,7 +10,7 @@ import {
   MDBCardFooter,
   MDBBtn,
 } from 'mdb-react-ui-kit';
-import Nav from './Nav';
+import Nav from './parts/Nav';
 import Footer from './Footer';
 
 

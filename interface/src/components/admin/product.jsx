@@ -15,9 +15,9 @@ import ReactQuill from 'react-quill';
 import { Image } from 'cloudinary-react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import Nav from './admin_nav';
-import AdminFooter from './admin_footer';
-import TblStructure from './table_structure';
+import Nav from './parts/admin_nav';
+import AdminFooter from './parts/admin_footer';
+import TblStructure from './parts/table_structure';
 
 const columns = ['Product Id', 'Product Name','Product Category', 'Price (Rs.)'];
 const columnsID = ['productid', 'name','productCategory', 'price'];
@@ -311,8 +311,6 @@ export default function Index() {
         <>
             <Nav/>
             <div className='container'>
-               
-
                 <MDBTypography style={{fontSize:'34PX' , fontWeight:'600' , color:'black' , letterSpacing:'2px' , marginTop:'6%' ,textAlign:'center' }} >YOUR PRODUCT LIST</MDBTypography>
                 <hr/>
                 <div className='text-end pt-3'>

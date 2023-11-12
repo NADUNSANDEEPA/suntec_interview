@@ -7,21 +7,9 @@ import {
   MDBCardBody,
   MDBBtn,
 } from 'mdb-react-ui-kit';
-import Nav from './AfterNav';
+import Nav from './parts/AfterNav';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-
-const BGCARD = {
-    background: 'linear-gradient(90deg, rgba(100,121,100,1) 0%, rgba(138,167,105,1) 100%)',
-    borderRadius:'8px',
-    marginTop:'4%'
-}
-
-const cardBg2 ={
-    backgroundColor : 'white',
-    border : '1px solid #D8D8D8'
-};
-  
 
 export default function ViewProduct() {
 

@@ -8,7 +8,7 @@ import {
   MDBRow,
   MDBCol,
 } from 'mdb-react-ui-kit';
-import Nav from './admin_nav';
+import Nav from './parts/admin_nav';
 
 const gradientBackground = {
     background: 'linear-gradient(90deg, rgba(212,213,212,1) 0%, rgba(198,198,198,0.4290966386554622) 35%, rgba(198,210,206,1) 100%)',

@@ -7,14 +7,15 @@ import {
   Route
 } from "react-router-dom";
 
-import Index from './components/Home';
+import Index from './components/customer/Home';
 import AdminDashboard from './components/admin/dashboard';
 import Products from './components/admin/product';
 
-import Login from './components/login';
-import Register from './components/Register';
-import CusDashboard from './components/Customer_dash';
-import ViewProduct from './components/View_product';
+import Login from './components/customer/login';
+import Register from './components/customer/Register';
+import CusDashboard from './components/customer/Customer_dash';
+import ViewProduct from './components/customer/View_product';
+import CusCart from './components/customer/CusCart';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/user/Login" element={<Login />}  />         
         <Route path="/user/Dashboard" element={<CusDashboard />}  />         
         <Route path="/user/ViewProduct" element={<ViewProduct />}  />         
+        <Route path="/user/Cart" element={<CusCart />}  />         
       </Routes>
     </BrowserRouter>
   );

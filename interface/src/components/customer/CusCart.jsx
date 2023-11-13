@@ -119,7 +119,7 @@ export default function Cart() {
     const isPaid = () => {
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.has("action")) {
-        alert(3);
+        
       }
     }
 

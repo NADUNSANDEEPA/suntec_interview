@@ -60,7 +60,6 @@ public class Customer {
     }
 
     // Getters and Setters
-
     public int getCustomertid() {
         return cusid;
     }

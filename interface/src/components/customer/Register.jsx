@@ -18,11 +18,6 @@ import Swal from 'sweetalert2';
 const gradientBackground = {
   background: 'linear-gradient(90deg, rgba(179,226,193,1) 0%, rgba(101,147,150,0.4290966386554622) 35%, rgba(59,147,118,1) 100%)',
 };
-const cardBg2 ={
-  backgroundColor : 'white',
-  border : '1px solid #D8D8D8'
-};
-
 
 export default function Register() {
 
@@ -182,8 +177,9 @@ export default function Register() {
                 icon: 'success',
                 title: 'Success',
                 text: 'Registered successfully!',
-              }).then((result) => {
+              }).then( async (result) => {
                 if (result.isConfirmed) {
+                  await role_registration();
                   window.location.href = "/user/Login";
                 }
             });
@@ -203,6 +199,20 @@ export default function Register() {
         title: 'Error',
         text: 'Registration Failed. Please check your network connection.',
       });
+    }
+  }
+
+  async function role_registration(){
+    const response = await axios.post('http://localhost:8080/user/userregister', {
+      email : email ,
+      password : password ,
+      user_role : "customer"
+    });
+
+    if (response.status === 200) {
+       console.log("user is created");
+    } else {
+       console.log("user is not created");
     }
   }
 

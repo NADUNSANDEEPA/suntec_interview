@@ -23,8 +23,11 @@ public class BackendApplication {
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowCredentials(true)
                         .allowedHeaders("*")
-                        .exposedHeaders("Authorization", "Content-Type");
+                        .exposedHeaders("Authorization", "Content-Type")
+                        .maxAge(3600); 
             }
         };
     }
+    
+
 }

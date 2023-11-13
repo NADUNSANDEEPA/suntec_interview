@@ -38,6 +38,7 @@ public class Order {
     @Column(name = "created_at", updatable = false)
     private Date createdAt;
 
+    
     public Order(){
     }
 

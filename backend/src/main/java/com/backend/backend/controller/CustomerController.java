@@ -4,6 +4,7 @@ import com.backend.backend.Model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +24,17 @@ public class CustomerController {
     @PostMapping("/register")
     public ResponseEntity<Integer> saveCustomer(@RequestBody Customer customer) {
         try {
+            String encryptedPassword = encryptPassword(customer.getPassword());
+            customer.setPassword(encryptedPassword);
             cusService.saveOrUpdate(customer);
             return new ResponseEntity<>(customer.getCustomertid(), HttpStatus.OK);
         } catch (Exception e) {
-            // Log the exception or handle it accordingly
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    private String encryptPassword(String password) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder.encode(password);
     }
 }

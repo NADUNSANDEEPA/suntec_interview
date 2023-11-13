@@ -1,19 +1,13 @@
 import React  , {useState , useEffect} from 'react';
 import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
   MDBTypography,
-  MDBRow,
-  MDBCol,
-  MDBCardFooter,
   MDBBtn,
 } from 'mdb-react-ui-kit';
 import Nav from './parts/Nav';
 import Footer from './Footer';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const gradientBackground = {
   background: 'linear-gradient(90deg, rgba(179,226,193,1) 0%, rgba(101,147,150,0.4290966386554622) 35%, rgba(59,147,118,1) 100%)',
@@ -39,6 +33,7 @@ export default function Register() {
   const [telephone, setTelephone] = useState('');
   const [validateTel, setValidateTel] = useState('');
   const [validateTelColor, setValidateTelColor] = useState('');
+  const [isVerified, setVerified] = useState(false);
 
   const handlePasswordChange = (e) => {
     const enteredPassword = e.target.value;
@@ -169,6 +164,15 @@ export default function Register() {
       password : password
     };
 
+    if (!isVerified) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please complete the reCAPTCHA verification.',
+      });
+      return;
+    }
+
     try {
         const response = await axios.post('http://localhost:8080/customer/register', data);
 
@@ -219,6 +223,10 @@ export default function Register() {
   function login(){
     window.location.href = "/user/Login";
   }
+
+  const handleRecaptchaChange = (value) => {
+    setVerified(true); 
+  };
 
   return (
     <>
@@ -336,7 +344,14 @@ export default function Register() {
               <small style={{ color: validateCPassColor }}>{validateCPass}</small>
 
             </div>
-            <div className='text-end'>
+            <div className='text-center'>
+              <ReCAPTCHA
+                sitekey="6LfMCg0pAAAAAP3zMemRoeRcT9dNm7Vb9S0RbciU"
+                onChange={handleRecaptchaChange}
+              />
+            </div>
+            <div className='text-end mt-3'>
+              
               <MDBBtn color='dark' className='btn-block shadow-0' onClick={reg_action}>
                 Submit
               </MDBBtn>

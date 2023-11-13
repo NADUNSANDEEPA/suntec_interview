@@ -16,6 +16,7 @@
     "react-bootstrap-table-next": "^4.0.3",
     "react-bootstrap-table2-paginator": "^2.1.2",
     "react-dom": "^18.2.0",
+    "react-google-recaptcha": "^3.1.0",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
